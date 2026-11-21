@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Google Search Console tag goes on this line -->
+<meta name="google-site-verification" content="EN8cMrBWVrlC5cKu9JTly6MEUnbAxLTwNcE_aSRD6R8" />
 <title>Houssain El Marouni · I build tools that catch AI agents inventing data</title>
 <meta name="description" content="Houssain El Marouni builds and ships tools that catch silent failures: Reported or Invented (2,100 published AI-agent runs), apidrift, TokenGuard and Voltura. Available for agent audits and roles.">
 <link rel="canonical" href="https://elmaroun07-hub.github.io/">
@@ -143,7 +143,7 @@ no error, no warning</pre>
 amount: <span class="bad">0</span></pre>
   </div>
  </div>
- <p class="small" style="margin-top:18px">From 1,008 action runs (gpt-oss-20b). With an empty, cut-off or zeroed read and no fix, agents made the wrong call in 72 of 72 runs. A one-sentence prompt fix still left 64 of 72.</p>
+ <p class="small" style="margin-top:18px">From 1,008 action runs (gpt-oss-20b). In the 72 runs where an empty, cut-off or zeroed read changed the data the task needed, agents with no fix made the wrong call 72 times. A one-sentence prompt fix still left 64 of 72.</p>
 </section>
 
 <section id="why">
@@ -152,8 +152,8 @@ amount: <span class="bad">0</span></pre>
  <div class="grid2 why">
   <div class="card"><h3><span class="n mono">01</span>I find the bugs that pass every test</h3><p>My own solar calculator cited NASA data while quietly using a default, and overstated savings by 13.5%. A job scanner reported zero offers while every API call failed. Agents refunded €0. I find this class of bug, prove it, and fix it with a test that fails first.</p></div>
   <div class="card"><h3><span class="n mono">02</span>I ship whole products, alone</h3><p>Data pipeline, database, API, web app, CLI, GitHub Action, npm package: I have built each of them myself, from the first idea to working software. Four products below.</p></div>
-  <div class="card"><h3><span class="n mono">03</span>My work survives other people's review</h3><p>Five fixes merged into career-ops, an open-source job-search tool, through maintainer review, shipped in its releases. Member of its contributors team. An open pull request to Google's Agent Development Kit.</p></div>
-  <div class="card"><h3><span class="n mono">04</span>I build fast with AI coding agents, and I check their work</h3><p>I direct Claude Code and Codex, and every change has to pass tests and gates before it ships. Errors in my own judge were caught and fixed before any number went out, and the repo says how the code was written.</p></div>
+  <div class="card"><h3><span class="n mono">03</span>My work survives other people's review</h3><p>Five fixes merged into career-ops, an open-source job-search tool, through maintainer review, shipped in its releases. Member of its GitHub organization. An open pull request to Google's Agent Development Kit.</p></div>
+  <div class="card"><h3><span class="n mono">04</span>I build fast with AI coding agents, and I check their work</h3><p>I direct Claude Code and Codex, and every change has to pass tests and gates before it ships. Every label was checked against the full answer (AI-assisted). When my own judge was wrong, I fixed it with a test that fails first, and every correction is in the repo. The repo says how the code was written.</p></div>
  </div>
 </section>
 
@@ -168,7 +168,7 @@ amount: <span class="bad">0</span></pre>
    <a class="go" href="https://github.com/elmaroun07-hub/reported-or-invented">Code and every run →</a>
   </div>
   <div class="card prod">
-   <div class="top"><h3>apidrift</h3><span class="badge new">New · in development</span></div>
+   <div class="top"><h3>apidrift</h3><span class="badge new">New · early access</span></div>
    <p class="what">Catches API changes that keep the shape but change the meaning.</p>
    <p>Compares real JSON responses before and after a change and flags what schema checks miss: a date that becomes an epoch number, cents that become euros. Every finding says why it matters. Runs as a CLI and a GitHub Action.</p>
    <p class="stack">TypeScript · zero runtime dependencies · 25 tests</p>
