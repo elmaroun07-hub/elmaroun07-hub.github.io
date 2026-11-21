@@ -4,48 +4,243 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Google Search Console tag goes on this line -->
-<title>Houssain El Marouni · AI agent reliability</title>
-<meta name="description" content="Houssain El Marouni, Tétouan, Morocco. I test what AI agents do when their tools fail silently: Reported or Invented, 2,100 published runs across four agent frameworks.">
+<title>Houssain El Marouni · I build tools that catch AI agents inventing data</title>
+<meta name="description" content="Houssain El Marouni builds and ships tools that catch silent failures: Reported or Invented (2,100 published AI-agent runs), apidrift, TokenGuard and Voltura. Available for agent audits and roles.">
 <link rel="canonical" href="https://elmaroun07-hub.github.io/">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Houssain El Marouni · AI agent reliability">
+<meta property="og:description" content="I find where AI agents silently invent a number. Agent audits and roles: elmaroun07@gmail.com">
+<meta property="og:url" content="https://elmaroun07-hub.github.io/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"Houssain El Marouni","url":"https://elmaroun07-hub.github.io/",
-"jobTitle":"AI agent evaluation and software reliability",
-"address":{"@type":"PostalAddress","addressLocality":"Tétouan","addressCountry":"MA"},
-"sameAs":["https://www.linkedin.com/in/houssain-elmarouni","https://github.com/elmaroun07-hub"]}
+{"@context":"https://schema.org","@type":"Person","name":"Houssain El Marouni","url":"https://elmaroun07-hub.github.io/","email":"mailto:elmaroun07@gmail.com","jobTitle":"AI agent evaluation and software reliability","address":{"@type":"PostalAddress","addressLocality":"Tétouan","addressCountry":"MA"},"sameAs":["https://www.linkedin.com/in/houssain-elmarouni","https://github.com/elmaroun07-hub"]}
 </script>
 <style>
-body{margin:0;background:#f5f2ea;color:#141414;font:17px/1.6 "IBM Plex Sans",system-ui,sans-serif}
-main{max-width:680px;margin:0 auto;padding:64px 24px}
-h1{font-size:40px;line-height:1.1;margin:0 0 12px}
-.line{font-size:22px;margin:0 0 8px}
-mark{background:none;color:#141414;box-shadow:inset 0 -0.35em 0 #f26b1d}
-.meta{font-family:"IBM Plex Mono",monospace;font-size:14px;color:#555;margin:0 0 40px}
-h2{font-family:"IBM Plex Mono",monospace;font-size:14px;text-transform:uppercase;letter-spacing:.08em;margin:40px 0 12px}
-li{margin:0 0 14px}
-a{color:#141414}
+:root{--paper:#f5f2ea;--ink:#141414;--soft:#5b5852;--line:#dcd7cb;--mark:#f26b1d;--card:#fffdf8}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 "IBM Plex Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+nav .name{font-weight:600;text-decoration:none}
+nav .links{display:flex;gap:20px;font-size:15px}
+nav .links a{text-decoration:none;color:var(--soft)}
+nav .links a:hover{color:var(--ink)}
+.hero{padding:56px 0 64px;border-bottom:1px solid var(--line)}
+.kicker{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);margin:0 0 18px}
+h1{font-size:clamp(36px,6vw,64px);line-height:1.05;letter-spacing:-.02em;margin:0 0 22px;max-width:16ch}
+mark{background:none;color:inherit;box-shadow:inset 0 -.32em 0 var(--mark)}
+.lead{font-size:20px;max-width:58ch;margin:0 0 32px;color:#2b2925}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:6px;font-weight:600;text-decoration:none;border:2px solid var(--ink);transition:transform .08s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn.ghost{background:transparent}
+.btn .arrow{color:var(--mark)}
+.note{font-size:14px;color:var(--soft);margin:14px 0 0}
+.proof{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line)}
+.proof div{padding:28px 24px 28px 0}
+.proof div+div{padding-left:24px;border-left:1px solid var(--line)}
+.proof b{display:block;font-size:34px;line-height:1.1;letter-spacing:-.01em}
+.proof span{font-size:15px;color:var(--soft)}
+section{padding:64px 0;border-bottom:1px solid var(--line)}
+h2{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);font-weight:500;margin:0 0 20px}
+.title{font-size:clamp(26px,3.4vw,36px);line-height:1.2;letter-spacing:-.01em;margin:0 0 28px;max-width:28ch}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:26px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.why h3{font-size:20px;margin:0 0 8px;letter-spacing:-.01em}
+.why h3 .n{color:var(--mark);margin-right:8px}
+.why p{margin:0;color:#2b2925}
+.example{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.box .label{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);margin:0 0 10px}
+.box pre{margin:0;font-size:14px;line-height:1.55;white-space:pre-wrap}
+.bad{box-shadow:inset 0 -.3em 0 var(--mark)}
+.big{font-size:26px;line-height:1.3;letter-spacing:-.01em;margin:0 0 20px;max-width:32ch}
+.prod{display:flex;flex-direction:column}
+.prod .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 0 6px}
+.prod h3{font-size:24px;margin:0;letter-spacing:-.01em}
+.badge{font-family:"IBM Plex Mono",monospace;font-size:12px;white-space:nowrap;padding:3px 8px;border:1px solid var(--ink);border-radius:999px}
+.badge.new{background:var(--mark);border-color:var(--mark);color:#fff}
+.prod .what{font-weight:500;margin:0 0 10px}
+.prod p{margin:0 0 12px}
+.prod .stack{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--soft);margin:auto 0 12px}
+.prod .go{font-weight:600}
+.offer{display:flex;flex-direction:column}
+.offer h3{font-size:24px;margin:0 0 10px;letter-spacing:-.01em}
+.offer p{margin:0 0 14px}
+.offer ul{margin:0 0 22px;padding-left:18px}
+.offer li{margin:0 0 8px}
+.offer .btn{margin-top:auto;align-self:flex-start}
+.small{font-size:14px;color:var(--soft)}
+.work{list-style:none;margin:0;padding:0}
+.work li{display:grid;grid-template-columns:220px 1fr;gap:24px;padding:18px 0;border-top:1px solid var(--line)}
+.work li:first-child{border-top:0;padding-top:0}
+.work .t{font-weight:600}
+.work a{font-size:15px}
+.final{padding:72px 0 96px;border-bottom:0}
+.final h2{color:var(--ink);font-size:clamp(28px,4vw,40px);text-transform:none;letter-spacing:-.01em;font-weight:700;margin:0 0 16px}
+.final .email{font-size:clamp(20px,3vw,28px);font-weight:600;text-decoration:none;box-shadow:inset 0 -.3em 0 var(--mark)}
+footer{padding:24px 0 96px;font-size:13px;color:var(--soft)}
+.sticky{display:none}
+@media (max-width:760px){
+ nav .links{display:none}
+ .hero{padding:32px 0 44px}
+ .proof{grid-template-columns:1fr}
+ .proof div,.proof div+div{padding:18px 0;border-left:0;border-top:1px solid var(--line)}
+ .proof div:first-child{border-top:0}
+ .grid2,.example{grid-template-columns:1fr}
+ .work li{grid-template-columns:1fr;gap:4px}
+ section{padding:48px 0}
+ .sticky{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:9;gap:8px}
+ .sticky a{flex:1;justify-content:center;padding:14px 10px;border-radius:8px;font-weight:600;text-decoration:none;border:2px solid var(--ink);display:flex}
+ .sticky .m{background:var(--ink);color:var(--paper)}
+ .sticky .l{background:var(--paper)}
+}
 </style>
 </head>
 <body>
-<main>
-<h1>Houssain El Marouni</h1>
-<p class="line">I find where AI agents silently invent a <mark>number</mark>.</p>
-<p class="meta">AI agent evaluation &amp; software reliability · Tétouan, Morocco · open to remote work or relocation</p>
+<div class="wrap">
 
-<h2>Work</h2>
-<ul>
-<li><strong>Reported or Invented</strong>: tests what AI agents do when their tools fail silently. 2,100 published runs across crewAI, LangGraph, Google ADK and the OpenAI Agents SDK.
-<a href="https://github.com/elmaroun07-hub/reported-or-invented">Code and every run</a> ·
-<a href="https://apartresearch.com/sprints/projects/reported-or-invented-a-onesentence-instruction-stops-agents-inventing-data-after-silent-tool-failures-a-toolside-note-mostly-does-no-nt5i6ei5rh">Apart Research project</a></li>
-<li><strong>career-ops</strong>: five merged fixes in an open-source job-search tool; member of its contributors team.
-<a href="https://github.com/career-ops-hq/career-ops">Repository</a></li>
-<li><strong>Voltura</strong>: open-source summer heat-risk screening of 32,431 residential buildings in Córdoba, Spain, from public registers.
-<a href="https://github.com/elmaroun07-hub/Voltura">Code</a></li>
-</ul>
+<nav>
+ <a class="name" href="#">Houssain El Marouni</a>
+ <div class="links"><a href="#why">Why me</a><a href="#products">Products</a><a href="#audit">Work with me</a><a href="#contact">Contact</a></div>
+</nav>
 
-<h2>Contact</h2>
-<p><a href="https://www.linkedin.com/in/houssain-elmarouni">LinkedIn</a> · <a href="https://github.com/elmaroun07-hub">GitHub</a> · <a href="mailto:elmaroun07@gmail.com">elmaroun07@gmail.com</a></p>
-</main>
+<header class="hero">
+ <p class="kicker mono">Builder · AI agent evaluation &amp; software reliability · Tétouan, Morocco</p>
+ <h1>I find where AI agents silently invent a <mark>number</mark>.</h1>
+ <p class="lead">When a tool returns empty, cut-off or zeroed data with a 200 OK, most agents carry on as if it were real. I build the tools that catch it, and I measure how often your agent states facts its tools never returned. You can re-run my numbers.</p>
+ <div class="ctas">
+  <a class="btn primary" href="mailto:elmaroun07@gmail.com?subject=Agent%20audit%20or%20role&amp;body=Hi%20Houssain%2C%0A%0AWhat%20I%27m%20working%20on%3A%0A%0AWhat%20I%27d%20like%20to%20talk%20about%3A%0A">Email me <span class="arrow">→</span></a>
+  <a class="btn ghost" href="https://www.linkedin.com/in/houssain-elmarouni">Message on LinkedIn</a>
+ </div>
+ <p class="note mono">elmaroun07@gmail.com · open to agent audits and to remote roles or relocation</p>
+</header>
+
+<div class="proof">
+ <div><b class="mono">4</b><span>products built end to end, on my own</span></div>
+ <div><b class="mono">2,100</b><span>published AI-agent runs across 4 frameworks, every label public</span></div>
+ <div><b class="mono">5</b><span>fixes merged into career-ops through maintainer review</span></div>
+</div>
+
+<section>
+ <h2>The problem I work on</h2>
+ <p class="big">An agent was asked to refund undelivered orders. Its tool silently returned zeroed amounts, and the agent refunded <span class="bad">€0</span>.</p>
+ <div class="example">
+  <div class="card box">
+   <p class="label mono">What the tool returned</p>
+<pre class="mono">HTTP 200 OK
+amounts: zeroed
+no error, no warning</pre>
+  </div>
+  <div class="card box">
+   <p class="label mono">What the agent did</p>
+<pre class="mono">POST /orders/O-5530/refund
+amount: <span class="bad">0</span></pre>
+  </div>
+ </div>
+ <p class="small" style="margin-top:18px">From 1,008 action runs (gpt-oss-20b). With an empty, cut-off or zeroed read and no fix, agents made the wrong call in 72 of 72 runs. A one-sentence prompt fix still left 64 of 72.</p>
+</section>
+
+<section id="why">
+ <h2>Why hire me</h2>
+ <p class="title">Four reasons, each one you can check.</p>
+ <div class="grid2 why">
+  <div class="card"><h3><span class="n mono">01</span>I find the bugs that pass every test</h3><p>My own solar calculator cited NASA data while quietly using a default, and overstated savings by 13.5%. A job scanner reported zero offers while every API call failed. Agents refunded €0. I find this class of bug, prove it, and fix it with a test that fails first.</p></div>
+  <div class="card"><h3><span class="n mono">02</span>I ship whole products, alone</h3><p>Data pipeline, database, API, web app, CLI, GitHub Action, npm package: I have built each of them myself, from the first idea to working software. Four products below.</p></div>
+  <div class="card"><h3><span class="n mono">03</span>My work survives other people's review</h3><p>Five fixes merged into career-ops, an open-source job-search tool, through maintainer review, shipped in its releases. Member of its contributors team. An open pull request to Google's Agent Development Kit.</p></div>
+  <div class="card"><h3><span class="n mono">04</span>I build fast with AI coding agents, and I check their work</h3><p>I direct Claude Code and Codex, and every change has to pass tests and gates before it ships. Errors in my own judge were caught and fixed before any number went out, and the repo says how the code was written.</p></div>
+ </div>
+</section>
+
+<section id="products">
+ <h2>Products I've built</h2>
+ <div class="grid2">
+  <div class="card prod">
+   <div class="top"><h3>Reported or Invented</h3><span class="badge">Open source</span></div>
+   <p class="what">Tests what AI agents do when their tools fail silently.</p>
+   <p>Injects empty, cut-off, zeroed and null responses into an agent's API calls, then judges every answer against what the tool really returned. 2,100 published runs on crewAI, LangGraph, Google ADK and the OpenAI Agents SDK.</p>
+   <p class="stack">Python · mitmproxy · rule-based judge · MIT</p>
+   <a class="go" href="https://github.com/elmaroun07-hub/reported-or-invented">Code and every run →</a>
+  </div>
+  <div class="card prod">
+   <div class="top"><h3>apidrift</h3><span class="badge new">New · in development</span></div>
+   <p class="what">Catches API changes that keep the shape but change the meaning.</p>
+   <p>Compares real JSON responses before and after a change and flags what schema checks miss: a date that becomes an epoch number, cents that become euros. Every finding says why it matters. Runs as a CLI and a GitHub Action.</p>
+   <p class="stack">TypeScript · zero runtime dependencies · 25 tests</p>
+   <a class="go" href="mailto:elmaroun07@gmail.com?subject=apidrift">Ask for early access →</a>
+  </div>
+  <div class="card prod">
+   <div class="top"><h3>TokenGuard</h3><span class="badge">On npm</span></div>
+   <p class="what">Audits what your LLM prompts really cost.</p>
+   <p>Counts tokens with real tokenizers, flags repeated content and projects the monthly cost from your call volumes. It refuses to print a number it cannot derive: missing data is never read as zero.</p>
+   <p class="stack">Node.js · @houssain/tokenguard · MIT</p>
+   <a class="go" href="https://www.npmjs.com/package/@houssain/tokenguard">View on npm →</a>
+  </div>
+  <div class="card prod">
+   <div class="top"><h3>Voltura</h3><span class="badge">Open source</span></div>
+   <p class="what">Shows where summer heat risk needs a closer look in Spain's oldest housing.</p>
+   <p>Scores 32,431 residential buildings in Córdoba from four public registers, each score with an uncertainty band and its sources. Includes a solar and battery calculator. Hosting is paused; the code is public.</p>
+   <p class="stack">TypeScript · PostgreSQL/PostGIS · MIT</p>
+   <a class="go" href="https://github.com/elmaroun07-hub/Voltura">Code →</a>
+  </div>
+ </div>
+</section>
+
+<section id="audit">
+ <h2>Work with me</h2>
+ <div class="grid2">
+  <div class="card offer">
+   <h3>Silent-failure audit for your agent</h3>
+   <p>Built on my own tools. I break the API responses your agent's tools receive, the quiet way, all with 200 OK.</p>
+   <ul>
+    <li>How often your agent passes bad data on as fact, invents values, or flags the problem</li>
+    <li>What the failures cost in wasted tool calls and time</li>
+    <li>Real-data and true-empty controls, so false alarms are counted too</li>
+    <li>Every run and label handed over, so your team can re-run it</li>
+   </ul>
+   <p class="small">Your agent's tools need to call HTTP APIs from a machine we control.</p>
+   <a class="btn primary" href="mailto:elmaroun07@gmail.com?subject=Silent-failure%20audit&amp;body=Hi%20Houssain%2C%0A%0AOur%20agent%20(framework%2C%20what%20it%20does)%3A%0A%0AThe%20APIs%20its%20tools%20call%3A%0A">Ask about an audit <span class="arrow">→</span></a>
+  </div>
+  <div class="card offer">
+   <h3>Hire me</h3>
+   <p>Open to remote work or relocation in AI evaluation, agent reliability, test automation, and building products from zero.</p>
+   <ul>
+    <li>Four products built on my own, from idea to working software</li>
+    <li>An agent-evaluation harness published across four frameworks</li>
+    <li>Five fixes merged into an open-source project through maintainer review</li>
+   </ul>
+   <a class="btn primary" href="mailto:elmaroun07@gmail.com?subject=Role&amp;body=Hi%20Houssain%2C%0A%0AThe%20role%3A%0A%0ALink%3A%0A">Email about a role <span class="arrow">→</span></a>
+  </div>
+ </div>
+</section>
+
+<section>
+ <h2>Open-source contributions and research</h2>
+ <ul class="work">
+  <li><div class="t">career-ops</div><div>Five merged fixes, including a scanner that finished with zero offers while every API call failed. <a href="https://github.com/career-ops-hq/career-ops">Repository</a></div></li>
+  <li><div class="t">Google ADK #8097</div><div>Pull request that tells the model when a tool's success body is empty or not JSON. Open, waiting for review. <a href="https://github.com/google/adk-python/pull/8097">Pull request</a></div></li>
+  <li><div class="t">Apart Research sprint</div><div>AI x Epistemics: a one-sentence prompt instruction took invented values from 38 to 0; a tool-side note mostly did not help. <a href="https://apartresearch.com/sprints/projects/reported-or-invented-a-onesentence-instruction-stops-agents-inventing-data-after-silent-tool-failures-a-toolside-note-mostly-does-no-nt5i6ei5rh">Project page</a></div></li>
+ </ul>
+</section>
+
+<section class="final" id="contact">
+ <h2>Have an agent in production, or a role to fill?</h2>
+ <p style="margin:0 0 22px">Email is the fastest way to reach me.</p>
+ <a class="email mono" href="mailto:elmaroun07@gmail.com">elmaroun07@gmail.com</a>
+ <p class="small" style="margin-top:22px"><a href="https://www.linkedin.com/in/houssain-elmarouni">LinkedIn</a> · <a href="https://github.com/elmaroun07-hub">GitHub</a></p>
+</section>
+
+<footer>Houssain El Marouni · Tétouan, Morocco</footer>
+</div>
+
+<div class="sticky">
+ <a class="m" href="mailto:elmaroun07@gmail.com?subject=Agent%20audit%20or%20role">Email me</a>
+ <a class="l" href="https://www.linkedin.com/in/houssain-elmarouni">LinkedIn</a>
+</div>
 </body>
 </html>
